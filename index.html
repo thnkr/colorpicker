@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+	<title>Colorpicker - Gooddata 2014 - Hackathon</title>
+	<meta charset="utf-8">
+	
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	
+	<!-- Bootstrap 3 -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	
+	<!-- MiniColors -->
+	<script src="jquery.minicolors.js"></script>
+	<link rel="stylesheet" href="jquery.minicolors.css">
+	
+	<style>
+		dl {
+			margin: 20px 0;
+		}
+		dt {
+			font-size: 120%;
+		}
+		dd {
+			padding: 10px 20px 20px 20px;
+		}
+		dd:last-child {
+			border-bottom: none;
+		}
+		code {
+			color: black;
+			border: none;
+			background: rgba(128, 128, 128, .1);
+		}
+		pre {
+			background: #f8f8f8;
+			border: none;
+			color: #333;
+			padding: 20px;
+		}
+		h2 {
+			margin-top: 50px;
+		}
+		h3 {
+			color: #aaa;
+		}
+	</style>
+	
+	<script>
+		$(document).ready( function() {
+			
+            $('.demo').each( function() {
+                //
+                // Dear reader, it's actually very easy to initialize MiniColors. For example:
+                //
+                //  $(selector).minicolors();
+                //
+                // The way I've done it below is just for the demo, so don't get confused 
+                // by it. Also, data- attributes aren't supported at this time...they're 
+                // only used for this demo.
+                //
+				$(this).minicolors({
+					control: $(this).attr('data-control') || 'hue',
+					defaultValue: $(this).attr('data-defaultValue') || '',
+					inline: $(this).attr('data-inline') === 'true',
+					letterCase: $(this).attr('data-letterCase') || 'lowercase',
+					opacity: $(this).attr('data-opacity'),
+					position: $(this).attr('data-position') || 'bottom left',
+					change: function(hex, opacity) {
+						if( !hex ) return;
+						if( opacity ) hex += ', ' + opacity;
+						try {
+							console.log(hex);
+						} catch(e) {}
+					},
+					theme: 'bootstrap'
+				});
+                
+            });
+			
+		});
+	</script>
+</head>
+<body>
+	<div class="row" style="margin: 40px 40px;">
+		<div class="col-12">
+			
+			<!-- Intro -->
+			<div id="intro" class="jumbotron">
+				<h1>Colorpicker</h1>
+				<p class="text-muted">
+					Gooddata now in color!
+				</p>
+				<p>
+				</p>
+			</div>
+			
+
+			<!-- Positions -->
+			<h3>Choose Color</h3>
+			<div class="well">
+				<p>
+					Basic description
+				</p>
+				<div class="row">
+					<div class="col-lg-4 col-sm-4 col-12">
+						<div class="form-group">
+							<label for="position-top-right">top right</label>
+							<input type="text" id="position-top-right" class="form-control demo" data-position="top right" value="#0088cc">
+						</div>
+					</div>
+					<div class="col-lg-4 col-sm-4 col-12">
+					</div>
+				</div>
+			</div>
+		
+			
+		</div>
+	</div>
+</body>
+</html>
